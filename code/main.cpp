@@ -10,7 +10,10 @@ enum game_items
 	ITEM_MAX,
 };
 
-int wmain()
+int WinMain(HINSTANCE hInstance,
+			HINSTANCE hPrevInstance,
+			LPSTR     lpCmdLine,
+			int       nShowCmd)
 {
 	InitLib(LIB_SDL_FULL);
 	render Graphics = InitGraphics("Outpost Trainer v1.0", {400, 400}, 
@@ -49,14 +52,14 @@ int wmain()
 	
 	uint32 AddressOffset[] = 
 	{
-		0x494C70,
-		0x494440,
-		0x492D20
+		0x161DC30,
+		0x161DC30,
+		0x168EF90
 	};
 	
-	uint32 WoodOffset[] = {0x330, 0x5A0, 0x18, 0x30};
-	uint32 StoneOffset[] = {0x90, 0x8C0, 0x18, 0x48};
-	uint32 EnergyOffset[] = {0xA70, 0x410, 0x110, 0x1C};
+	uint32 WoodOffset[] = {0xD0, 0x8, 0xB8, 0x358, 0x8, 0x18, 0x30};
+	uint32 StoneOffset[] = {0xD0, 0x8, 0xB8, 0x358, 0x8, 0x18, 0x48};
+	uint32 EnergyOffset[] = {0x20, 0x30, 0, 0x10, 0xB0, 0x60, 0x1C};
 	
 	image_data* UITextures = LoadUITextures(Graphics.Renderer);
 	button Button[ITEM_MAX] = {};
@@ -79,7 +82,7 @@ int wmain()
 		image_data ItemsValueText[ITEM_MAX] = {}; 
 		
 		process_info ProcessInfo = 
-		GetProcessInfo(ProcessName, "mono-2.0-bdwgc.dll");
+		GetProcessInfo(ProcessName, "UnityPlayer.dll");
 		
 		ResetKeyState(&Input.Mouse, BUTTON_MAX);
 		ResetKeyState(&Input.Keyboard, KEY_MAX);
